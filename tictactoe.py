@@ -53,7 +53,11 @@ class Game:
 
         # check diagonals
         for p in self.PLAYERS:
-            if all(x == p for x in (self.board[0, 0], self.board[1, 1], self.board[2, 2])):
+            if (
+                all(x == p for x in (self.board[0, 0], self.board[1, 1], self.board[2, 2]))
+                or
+                all(x == p for x in (self.board[0, 2], self.board[1, 1], self.board[2, 0]))
+                ):
                 return p
 
     def __str__(self):

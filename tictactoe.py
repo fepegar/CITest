@@ -24,6 +24,7 @@ class Game:
     def place(self, r, c, player):
         """Place the player's marker, where `player` is EX or OH, at row `r` and column `c`."""
         # your code here
+        self.board[r, c] = player
 
     def is_valid_board(self):
         """
@@ -31,6 +32,9 @@ class Game:
         be in. Eg. since X and O alternate during play the number of each token on the board has to reflect that.
         """
         # your code here
+        num_exes = (self.board == self.EX).sum()
+        num_ohs = (self.board == self.OH).sum()
+        return abs(num_exes - num_ohs) <= 1
 
     def get_winning_player(self):
         """Returns the player number who has won the game, or None if no one has won."""
